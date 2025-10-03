@@ -170,6 +170,7 @@ orasis-challenge/
 │   │   │   │   ├── DashboardContent.tsx
 │   │   │   │   ├── DashboardErrorBoundary.tsx
 │   │   │   │   ├── DashboardSkeleton.tsx
+│   │   │   │   ├── DashboardWrapper.tsx
 │   │   │   │   ├── LastUsersCard.tsx
 │   │   │   │   ├── RegionChartCard.tsx
 │   │   │   │   └── TopCard.tsx
@@ -194,10 +195,12 @@ orasis-challenge/
 │   │   │   └── dashboard.ts    # Serviço de dashboard com validação
 │   │   ├── globals.css         # Estilos globais
 │   │   ├── layout.tsx          # Layout raiz
+│   │   └── not-found.tsx       # Página 404
 │   │   └── page.tsx            # Página principal
 │   └── ...
 ├── public/                     # Arquivos estáticos
 │   └── logo-tesla.svg
+│   └── favicon.png
 ├── jest.config.ts              # Configuração do Jest
 ├── jest.setup.ts               # Setup do Jest
 ├── next.config.ts              # Configuração do Next.js
