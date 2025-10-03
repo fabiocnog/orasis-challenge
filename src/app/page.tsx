@@ -1,29 +1,18 @@
-"use client"
 import Content from "./components/layout/Content";
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
-import DashboardContent from "./components/dashboard/DashboardContent";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import DashboardSkeleton from "./components/dashboard/DashboardSkeleton";
 import DashboardErrorBoundary from "./components/dashboard/DashboardErrorBoundary";
+import DashboardWrapper from "./components/dashboard/DashboardWrapper";
 
-
-const theme = createTheme();
-
-export default function Home() {
-  const searchParams = useSearchParams();
-  const role = searchParams.get("role") as "valid" | "invalid" | "viewer" || "valid";
+export default async function Home({searchParams}: {searchParams: Promise<{role?: string}>}) {
+  const params = await searchParams;
+  const role = (params.role as "valid" | "invalid" | "viewer") || "valid";
+  
   return (
     <div className="w-full h-screen bg-white">
-      <ThemeProvider theme={theme}>
-        <Content>
-          <DashboardErrorBoundary>
-            <Suspense fallback={<DashboardSkeleton role={role} />}>
-              <DashboardContent role={role} />
-            </Suspense>
-          </DashboardErrorBoundary>
-        </Content>
-      </ThemeProvider>
+      <Content>
+        <DashboardErrorBoundary>
+          <DashboardWrapper role={role} />
+        </DashboardErrorBoundary>
+      </Content>
     </div>
   );
 }
